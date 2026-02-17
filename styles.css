@@ -1,71 +1,51 @@
-/* =============================================================================
-   CSS RESET AND BASE STYLES
-   ============================================================================= */
-
-/* Universal selector (*) for CSS reset - removes default margin, padding, and sets box-sizing */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Box model: includes padding and border in element's total width/height */
+    box-sizing: border-box;
 }
 
-/* Root variables for consistent color scheme and spacing */
 :root {
-    /* Color palette using CSS custom properties (variables) */
-    --primary-color: #2c3e50;      /* Dark blue-gray */
-    --secondary-color: #3498db;    /* Bright blue */
-    --accent-color: #e74c3c;       /* Red accent */
-    --success-color: #27ae60;      /* Green for success states */
-    --text-dark: #2c3e50;          /* Dark text */
-    --text-light: #7f8c8d;        /* Light gray text */
-    --text-white: #ffffff;         /* White text */
-    --background-light: #f8f9fa;   /* Light background */
-    --background-white: #ffffff;   /* Pure white background */
-    --border-color: #e9ecef;       /* Light border color */
-    --shadow-light: 0 2px 4px rgba(0,0,0,0.1);     /* Light shadow */
-    --shadow-medium: 0 4px 6px rgba(0,0,0,0.15);   /* Medium shadow */
-    --shadow-strong: 0 8px 16px rgba(0,0,0,0.2);   /* Strong shadow */
-    
-    /* Spacing scale using rem units for scalability */
-    --spacing-xs: 0.25rem;  /* 4px */
-    --spacing-sm: 0.5rem;   /* 8px */
-    --spacing-md: 1rem;     /* 16px */
-    --spacing-lg: 1.5rem;   /* 24px */
-    --spacing-xl: 2rem;     /* 32px */
-    --spacing-xxl: 3rem;    /* 48px */
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --success-color: #27ae60;
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+    --text-white: #ffffff;
+    --background-light: #f8f9fa;
+    --background-white: #ffffff;
+    --border-color: #e9ecef;
+    --shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-medium: 0 4px 6px rgba(0,0,0,0.15);
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 3rem;
 }
 
-/* =============================================================================
-   TYPOGRAPHY AND BASE ELEMENTS
-   ============================================================================= */
-
-/* Body element with font family hierarchy and basic styling */
 body {
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: 16px;           /* Base font size */
-    line-height: 1.6;          /* Line height for readability */
-    color: var(--text-dark);   /* Text color using CSS variable */
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-dark);
     background-color: var(--background-light);
-    font-weight: 400;          /* Normal font weight */
 }
 
-/* Heading styles with font weights and margins */
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;          /* Semi-bold weight */
-    line-height: 1.2;          /* Tighter line height for headings */
+    font-weight: 600;
+    line-height: 1.2;
     margin-bottom: var(--spacing-sm);
 }
 
-/* Paragraph styling with bottom margin */
 p {
     margin-bottom: var(--spacing-md);
 }
 
-/* Link styles with transitions for smooth hover effects */
 a {
     color: var(--secondary-color);
     text-decoration: none;
-    transition: color 0.3s ease; /* CSS transition for smooth color change */
+    transition: color 0.3s ease;
 }
 
 a:hover {
@@ -73,174 +53,92 @@ a:hover {
     text-decoration: underline;
 }
 
-/* List styles - removing default list styling */
 ul, ol {
     list-style: none;
 }
 
-/* =============================================================================
-   LAYOUT - CSS GRID AND FLEXBOX
-   ============================================================================= */
-
-/* Main container using CSS Grid for overall page layout */
 .cv-container {
-    display: grid;                    /* CSS Grid display */
-    grid-template-areas:              /* Named grid areas for semantic layout */
-        "header"
-        "main"
-        "footer";
-    grid-template-rows: auto 1fr auto; /* Header/footer auto-size, main expands */
-    min-height: 100vh;                /* Minimum height of viewport */
-    max-width: 1200px;                /* Maximum width constraint */
-    margin: 0 auto;                   /* Center alignment using auto margins */
+    display: grid;
+    grid-template-areas: "header" "main" "footer";
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
     background-color: var(--background-white);
-    box-shadow: var(--shadow-medium); /* Box shadow for depth */
+    box-shadow: var(--shadow-medium);
 }
 
-/* =============================================================================
-   HEADER SECTION STYLES
-   ============================================================================= */
-
-/* Header using grid area and flexbox for internal layout */
 .header {
-    grid-area: header;            /* Assigning to grid area */
+    grid-area: header;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: var(--text-white);
     padding: var(--spacing-xxl) var(--spacing-xl);
-    position: relative;           /* For pseudo-element positioning */
-    overflow: hidden;            /* Hide overflow for decorative elements */
 }
 
-/* Decorative pseudo-element for header background */
-.header::before {
-    content: '';
-    position: absolute;          /* Absolute positioning relative to header */
-    top: -50%;
-    right: -10%;
-    width: 200px;
-    height: 200px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;          /* Circular shape */
-    transform: rotate(45deg);    /* CSS transform for rotation */
-}
-
-/* Header content container using flexbox */
 .header-content {
-    display: flex;               /* Flexbox display */
-    justify-content: space-between; /* Space between elements */
-    align-items: flex-start;     /* Align items to start */
-    flex-wrap: wrap;            /* Allow wrapping on smaller screens */
-    gap: var(--spacing-xl);     /* Gap between flex items */
-    position: relative;         /* Above the pseudo-element */
-    z-index: 1;                 /* Z-index for layering */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: var(--spacing-xl);
 }
 
-/* =============================================================================
-   PROFILE PHOTO STYLES
-   ============================================================================= */
-
-/* Profile photo container with relative positioning for decorative elements */
 .profile-photo {
-    position: relative;          /* For absolute positioning of decorative border */
-    flex-shrink: 0;             /* Prevent shrinking in flexbox */
-    margin-right: var(--spacing-lg); /* Spacing from personal info */
+    flex-shrink: 0;
+    margin-right: var(--spacing-lg);
 }
 
-/* Main profile image styling */
 .profile-img {
-    width: 150px;               /* Fixed width for consistency */
-    height: 150px;              /* Fixed height for perfect circle */
-    border-radius: 50%;         /* Circular shape */
-    object-fit: cover;          /* Cover entire area while maintaining aspect ratio */
-    object-position: center;    /* Center the image within the circle */
-    border: 4px solid rgba(255, 255, 255, 0.3); /* Semi-transparent white border */
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.3),           /* Main shadow for depth */
-        0 0 0 8px rgba(255, 255, 255, 0.1);      /* Outer glow effect */
-    transition: all 0.3s ease;  /* Smooth transition for hover effects */
-    position: relative;         /* For z-index stacking */
-    z-index: 2;                 /* Above decorative border */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-/* Hover effect for profile image */
-.profile-img:hover {
-    transform: scale(1.05);     /* Slight scale increase on hover */
-    box-shadow: 
-        0 12px 40px rgba(0, 0, 0, 0.4),          /* Enhanced shadow */
-        0 0 0 12px rgba(255, 255, 255, 0.2);     /* Larger glow */
-    border-color: rgba(255, 255, 255, 0.5);     /* Brighter border on hover */
-}
-
-/* Decorative rotating border element */
-.photo-border {
-    position: absolute;         /* Absolute positioning relative to .profile-photo */
-    top: -15px;                /* Offset from image */
-    left: -15px;
-    width: 180px;              /* Larger than image for border effect */
-    height: 180px;
-    border: 3px solid transparent; /* Transparent base border */
-    border-top: 3px solid rgba(255, 255, 255, 0.6);    /* Visible top border */
-    border-right: 3px solid rgba(255, 255, 255, 0.3);   /* Semi-visible right */
-    border-radius: 50%;        /* Circular shape matching image */
-    z-index: 1;                /* Behind the main image */
-    animation: rotate 10s linear infinite; /* Continuous rotation animation */
-}
-
-/* Rotation animation keyframes */
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);  /* Start rotation */
-    }
-    to {
-        transform: rotate(360deg); /* Complete full rotation */
-    }
-}
-
-/* Personal information section */
 .personal-info h1 {
-    font-size: 2.5rem;          /* Large font size for name */
-    font-weight: 700;           /* Bold weight */
-    margin-bottom: var(--spacing-xs);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Text shadow for depth */
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .personal-info h2 {
     font-size: 1.25rem;
-    font-weight: 400;           /* Normal weight for title */
-    color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: var(--spacing-md);
 }
 
 .career-goal {
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.8);
-    max-width: 400px;           /* Constraint for readability */
+    max-width: 400px;
     line-height: 1.5;
 }
 
-/* Contact information using flexbox */
 .contact-info {
-    display: flex;              /* Flexbox layout */
-    flex-direction: column;     /* Vertical stacking */
-    gap: var(--spacing-sm);     /* Consistent gap between items */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
 }
 
-/* Individual contact items using flexbox */
 .contact-item {
-    display: flex;              /* Flexbox for icon and text alignment */
-    align-items: center;        /* Center vertical alignment */
-    gap: var(--spacing-sm);     /* Gap between icon and text */
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
     font-size: 0.9rem;
 }
 
 .contact-item i {
-    width: 16px;                /* Fixed width for icon alignment */
-    text-align: center;         /* Center icon within its width */
+    width: 16px;
+    text-align: center;
     color: rgba(255, 255, 255, 0.9);
 }
 
 .contact-item a {
-    color: var(--text-white);   /* White text for links */
+    color: var(--text-white);
 }
 
 .contact-item a:hover {
@@ -248,75 +146,50 @@ ul, ol {
     text-decoration: underline;
 }
 
-/* =============================================================================
-   MAIN CONTENT - CSS GRID LAYOUT
-   ============================================================================= */
-
-/* Main content area using CSS Grid */
 .main-content {
-    grid-area: main;            /* Grid area assignment */
-    display: grid;              /* Nested grid */
-    grid-template-columns: 2fr 1fr; /* Two columns: main content wider than sidebar */
-    gap: var(--spacing-xxl);    /* Gap between columns */
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-xxl);
     padding: var(--spacing-xxl);
     background-color: var(--background-white);
 }
 
-/* Left column for main content */
 .left-column {
-    display: flex;              /* Flexbox for vertical stacking */
-    flex-direction: column;     /* Column direction */
-    gap: var(--spacing-xl);     /* Gap between sections */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
 }
 
-/* Right column for sidebar */
 .right-column {
-    display: flex;              /* Flexbox for vertical stacking */
-    flex-direction: column;     /* Column direction */
-    gap: var(--spacing-lg);     /* Smaller gap than left column */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
 }
 
-/* =============================================================================
-   SECTION STYLES
-   ============================================================================= */
-
-/* Generic section styling */
 .section {
     background-color: var(--background-white);
-    border-radius: 8px;         /* Rounded corners */
+    border-radius: 8px;
     padding: var(--spacing-lg);
     box-shadow: var(--shadow-light);
-    border-left: 4px solid var(--secondary-color); /* Left border accent */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover animations */
 }
 
-/* Hover effect for sections */
-.section:hover {
-    transform: translateY(-2px); /* Slight upward movement */
-    box-shadow: var(--shadow-medium);
-}
-
-/* Section titles with flexbox alignment */
 .section-title {
-    display: flex;              /* Flexbox for icon and text */
-    align-items: center;        /* Center alignment */
-    gap: var(--spacing-sm);     /* Gap between icon and text */
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
     color: var(--primary-color);
     font-size: 1.4rem;
     font-weight: 600;
     margin-bottom: var(--spacing-lg);
     padding-bottom: var(--spacing-sm);
-    border-bottom: 2px solid var(--border-color); /* Bottom border */
+    border-bottom: 2px solid var(--border-color);
 }
 
 .section-title i {
-    color: var(--secondary-color); /* Icon color */
+    color: var(--secondary-color);
     font-size: 1.2rem;
 }
-
-/* =============================================================================
-   EDUCATION SECTION
-   ============================================================================= */
 
 .education-item h4 {
     color: var(--primary-color);
@@ -330,32 +203,26 @@ ul, ol {
     margin-bottom: var(--spacing-sm);
 }
 
-/* Education metadata using flexbox */
 .education-meta {
-    display: flex;              /* Flexbox layout */
-    justify-content: space-between; /* Space between year and CGPA */
-    flex-wrap: wrap;            /* Allow wrapping */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     gap: var(--spacing-sm);
 }
 
 .year, .cgpa {
     font-size: 0.9rem;
     color: var(--text-light);
-    padding: var(--spacing-xs) var(--spacing-sm);
+    padding: var(--spacing-sm);
     background-color: var(--background-light);
-    border-radius: 4px;         /* Rounded corners */
+    border-radius: 4px;
 }
 
 .cgpa {
-    color: var(--success-color); /* Green color for CGPA */
+    color: var(--success-color);
     font-weight: 600;
 }
 
-/* =============================================================================
-   PROJECTS SECTION
-   ============================================================================= */
-
-/* Project items with spacing */
 .project-item {
     margin-bottom: var(--spacing-xl);
     padding-bottom: var(--spacing-lg);
@@ -363,7 +230,7 @@ ul, ol {
 }
 
 .project-item:last-child {
-    border-bottom: none;        /* Remove border from last item */
+    border-bottom: none;
     margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -371,7 +238,7 @@ ul, ol {
 .project-item h4 {
     color: var(--primary-color);
     font-size: 1.2rem;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
 }
 
 .project-type {
@@ -380,50 +247,41 @@ ul, ol {
     margin-bottom: var(--spacing-sm);
 }
 
-/* Technology stack using flexbox */
 .tech-stack {
-    display: flex;              /* Flexbox layout */
-    flex-wrap: wrap;            /* Allow wrapping of tech items */
-    gap: var(--spacing-xs);     /* Small gap between items */
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
     margin-bottom: var(--spacing-md);
 }
 
-/* Individual technology tags */
 .tech {
     background-color: var(--secondary-color);
     color: var(--text-white);
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: 12px;        /* Pill-shaped border radius */
+    padding: var(--spacing-sm);
+    border-radius: 12px;
     font-size: 0.8rem;
     font-weight: 500;
-    white-space: nowrap;        /* Prevent text wrapping */
 }
 
-/* Project features list */
 .project-features {
     list-style: none;
     margin-left: var(--spacing-md);
 }
 
 .project-features li {
-    position: relative;         /* For pseudo-element bullet */
+    position: relative;
     padding-left: var(--spacing-md);
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
     color: var(--text-dark);
 }
 
-/* Custom bullet points using pseudo-elements */
 .project-features li::before {
-    content: '▸';               /* Unicode arrow character */
+    content: '▸';
     position: absolute;
     left: 0;
     color: var(--secondary-color);
     font-weight: bold;
 }
-
-/* =============================================================================
-   SKILLS SECTION
-   ============================================================================= */
 
 .skills-category {
     margin-bottom: var(--spacing-lg);
@@ -436,73 +294,46 @@ ul, ol {
     font-weight: 500;
 }
 
-/* Skills grid using CSS Grid */
 .skills-grid {
-    display: grid;              /* CSS Grid layout */
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Responsive columns */
-    gap: var(--spacing-sm);     /* Gap between grid items */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: var(--spacing-sm);
 }
 
-/* Individual skill items */
 .skill-item {
     background-color: var(--background-light);
     color: var(--text-dark);
-    padding: var(--spacing-sm) var(--spacing-xs);
+    padding: var(--spacing-sm);
     border-radius: 6px;
-    text-align: center;         /* Center text alignment */
+    text-align: center;
     font-size: 0.85rem;
     font-weight: 500;
-    transition: all 0.3s ease;  /* Smooth transition for hover */
-    border: 2px solid transparent; /* Transparent border for hover effect */
 }
 
-/* Hover effect for skill items */
-.skill-item:hover {
-    background-color: var(--secondary-color);
-    color: var(--text-white);
-    transform: translateY(-2px); /* Slight lift effect */
-}
-
-/* Currently learning skills with different styling */
 .skill-item.learning {
-    background-color: rgba(231, 76, 60, 0.1); /* Light red background */
+    background-color: rgba(231, 76, 60, 0.1);
     border: 2px solid var(--accent-color);
     color: var(--accent-color);
 }
 
-.skill-item.learning:hover {
-    background-color: var(--accent-color);
-    color: var(--text-white);
-}
-
-/* =============================================================================
-   ACHIEVEMENTS SECTION
-   ============================================================================= */
-
 .achievement-list {
-    display: flex;              /* Flexbox layout */
-    flex-direction: column;     /* Vertical stacking */
-    gap: var(--spacing-sm);     /* Gap between achievements */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
 }
 
-/* Individual achievement items */
 .achievement-item {
-    display: flex;              /* Flexbox for icon and text */
-    align-items: center;        /* Center alignment */
-    gap: var(--spacing-sm);     /* Gap between icon and text */
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
     padding: var(--spacing-sm);
     background-color: var(--background-light);
     border-radius: 6px;
-    transition: background-color 0.3s ease; /* Hover transition */
-}
-
-.achievement-item:hover {
-    background-color: rgba(52, 152, 219, 0.1); /* Light blue on hover */
 }
 
 .achievement-item i {
     color: var(--secondary-color);
-    width: 16px;                /* Fixed width for alignment */
+    width: 16px;
     text-align: center;
 }
 
@@ -511,135 +342,67 @@ ul, ol {
     color: var(--text-dark);
 }
 
-/* =============================================================================
-   SOFT SKILLS SECTION
-   ============================================================================= */
-
-/* Soft skills using flexbox with wrapping */
 .soft-skills-list {
-    display: flex;              /* Flexbox layout */
-    flex-wrap: wrap;            /* Allow wrapping */
-    gap: var(--spacing-sm);     /* Gap between items */
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
 }
 
 .soft-skill {
     background-color: var(--success-color);
     color: var(--text-white);
     padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: 20px;        /* Pill shape */
+    border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 500;
-    white-space: nowrap;        /* Prevent text wrapping */
-    transition: transform 0.3s ease; /* Hover animation */
 }
-
-.soft-skill:hover {
-    transform: scale(1.05);     /* Slight scale increase on hover */
-}
-
-/* =============================================================================
-   HOBBIES SECTION
-   ============================================================================= */
-
-.hobbies-list {
-    display: flex;              /* Flexbox layout */
-    flex-direction: column;     /* Vertical stacking */
-    gap: var(--spacing-sm);     /* Gap between hobbies */
-}
-
-/* Individual hobby items */
-.hobby-item {
-    display: flex;              /* Flexbox for icon and text */
-    align-items: center;        /* Center alignment */
-    gap: var(--spacing-sm);     /* Gap between icon and text */
-    padding: var(--spacing-sm);
-    background-color: var(--background-light);
-    border-radius: 6px;
-    transition: all 0.3s ease;  /* Smooth transitions */
-}
-
-.hobby-item:hover {
-    background-color: rgba(39, 174, 96, 0.1); /* Light green on hover */
-    transform: translateX(5px); /* Slight right movement */
-}
-
-.hobby-item i {
-    color: var(--success-color);
-    width: 16px;
-    text-align: center;
-}
-
-/* =============================================================================
-   FOOTER SECTION
-   ============================================================================= */
 
 .footer {
-    grid-area: footer;          /* Grid area assignment */
+    grid-area: footer;
     background-color: var(--primary-color);
     color: var(--text-white);
-    text-align: center;         /* Center text alignment */
+    text-align: center;
     padding: var(--spacing-lg);
     font-size: 0.9rem;
 }
 
-/* =============================================================================
-   RESPONSIVE DESIGN - MEDIA QUERIES
-   ============================================================================= */
-
-/* Tablet styles - max-width: 768px */
 @media (max-width: 768px) {
-    /* Adjust main content grid for tablets */
     .main-content {
-        grid-template-columns: 1fr; /* Single column layout */
+        grid-template-columns: 1fr;
         gap: var(--spacing-xl);
         padding: var(--spacing-xl);
     }
     
-    /* Header content stacking */
     .header-content {
-        flex-direction: column;   /* Stack vertically */
-        align-items: center;      /* Center alignment */
-        text-align: center;       /* Center text */
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
     
-    /* Profile photo adjustments for tablet */
     .profile-photo {
-        margin-right: 0;          /* Remove right margin when stacked */
-        margin-bottom: var(--spacing-lg); /* Add bottom margin for spacing */
-        order: -1;                /* Move photo to top when stacked */
+        margin-right: 0;
+        margin-bottom: var(--spacing-lg);
     }
     
     .profile-img {
-        width: 120px;             /* Smaller size for tablets */
+        width: 120px;
         height: 120px;
     }
     
-    .photo-border {
-        width: 150px;             /* Adjust decorative border size */
-        height: 150px;
-        top: -15px;
-        left: -15px;
-    }
-    
-    /* Adjust header padding */
     .header {
         padding: var(--spacing-xl) var(--spacing-lg);
     }
     
-    /* Smaller heading on tablets */
     .personal-info h1 {
         font-size: 2rem;
     }
     
-    /* Skills grid adjustment */
     .skills-grid {
         grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
     }
 }
 
-/* Mobile styles - max-width: 480px */
 @media (max-width: 480px) {
-    /* Further reduce padding for mobile */
     .main-content {
         padding: var(--spacing-lg);
     }
@@ -648,194 +411,29 @@ ul, ol {
         padding: var(--spacing-lg);
     }
     
-    /* Profile photo adjustments for mobile */
     .profile-img {
-        width: 100px;             /* Smaller size for mobile screens */
+        width: 100px;
         height: 100px;
     }
     
-    .photo-border {
-        width: 130px;             /* Proportional decorative border */
-        height: 130px;
-        top: -15px;
-        left: -15px;
-    }
-    
-    .profile-photo {
-        margin-bottom: var(--spacing-md); /* Reduce bottom margin on mobile */
-    }
-    
-    /* Even smaller heading on mobile */
     .personal-info h1 {
         font-size: 1.8rem;
     }
     
-    /* Section padding reduction */
     .section {
         padding: var(--spacing-md);
     }
     
-    /* Skills grid for mobile */
     .skills-grid {
-        grid-template-columns: 1fr 1fr; /* Two columns on mobile */
+        grid-template-columns: 1fr 1fr;
     }
     
-    /* Tech stack adjustment */
-    .tech-stack {
-        justify-content: center; /* Center align tech items */
-    }
-    
-    /* Education meta stacking */
     .education-meta {
-        flex-direction: column;   /* Stack year and CGPA */
-        align-items: flex-start;  /* Left align */
+        flex-direction: column;
+        align-items: flex-start;
     }
     
-    /* Contact info font size */
     .contact-item {
         font-size: 0.85rem;
     }
 }
-
-/* Print styles for PDF generation */
-@media print {
-    /* Remove shadows and backgrounds for printing */
-    .cv-container {
-        box-shadow: none;
-        max-width: none;
-    }
-    
-    .section {
-        box-shadow: none;
-        page-break-inside: avoid; /* Avoid breaking sections across pages */
-    }
-    
-    .header {
-        background: var(--primary-color) !important;
-        -webkit-print-color-adjust: exact; /* Preserve background colors */
-        color-adjust: exact;
-    }
-    
-    /* Profile photo print optimization */
-    .profile-img {
-        width: 100px;             /* Smaller size for print to save space */
-        height: 100px;
-        box-shadow: none;         /* Remove shadows for clean print */
-        border: 2px solid #333;   /* Solid border for print clarity */
-    }
-    
-    .photo-border {
-        display: none;            /* Hide decorative rotating border in print */
-    }
-    
-    /* Ensure good contrast for printing */
-    .tech, .soft-skill, .skill-item {
-        background-color: #f0f0f0 !important;
-        color: #333 !important;
-        border: 1px solid #ccc;
-    }
-}
-
-/* =============================================================================
-   ACCESSIBILITY IMPROVEMENTS
-   ============================================================================= */
-
-/* Focus styles for keyboard navigation */
-.contact-item a:focus,
-.skill-item:focus,
-.section:focus {
-    outline: 2px solid var(--secondary-color);
-    outline-offset: 2px;
-}
-
-/* Reduced motion for users who prefer it */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-    
-    /* Specifically disable profile photo rotation for reduced motion users */
-    .photo-border {
-        animation: none !important; /* Remove rotation animation */
-    }
-    
-    .profile-img:hover {
-        transform: none !important; /* Remove hover scale effect */
-    }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-    :root {
-        --primary-color: #000000;
-        --secondary-color: #0000ff;
-        --text-dark: #000000;
-        --background-white: #ffffff;
-    }
-}
-
-/* =============================================================================
-   ANIMATION AND MICRO-INTERACTIONS
-   ============================================================================= */
-
-/* Subtle animation for page load */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Apply animation to sections */
-.section {
-    animation: fadeInUp 0.6s ease-out forwards;
-}
-
-/* Staggered animation delays */
-.section:nth-child(1) { animation-delay: 0.1s; }
-.section:nth-child(2) { animation-delay: 0.2s; }
-.section:nth-child(3) { animation-delay: 0.3s; }
-.section:nth-child(4) { animation-delay: 0.4s; }
-.section:nth-child(5) { animation-delay: 0.5s; }
-
-/* Hover effect for the entire CV container */
-.cv-container:hover .section {
-    transition: all 0.3s ease;
-}
-
-/* =============================================================================
-   UTILITY CLASSES
-   ============================================================================= */
-
-/* Utility class for screen readers */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-/* Utility class for text alignment */
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-
-/* Utility classes for spacing */
-.mt-sm { margin-top: var(--spacing-sm); }
-.mt-md { margin-top: var(--spacing-md); }
-.mt-lg { margin-top: var(--spacing-lg); }
-
-.mb-sm { margin-bottom: var(--spacing-sm); }
-.mb-md { margin-bottom: var(--spacing-md); }
-.mb-lg { margin-bottom: var(--spacing-lg); }
