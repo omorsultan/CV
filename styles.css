@@ -127,12 +127,73 @@ ul, ol {
 /* Header content container using flexbox */
 .header-content {
     display: flex;               /* Flexbox display */
-    justify-content: space-between; /* Space between personal info and contact */
+    justify-content: space-between; /* Space between elements */
     align-items: flex-start;     /* Align items to start */
     flex-wrap: wrap;            /* Allow wrapping on smaller screens */
     gap: var(--spacing-xl);     /* Gap between flex items */
     position: relative;         /* Above the pseudo-element */
     z-index: 1;                 /* Z-index for layering */
+}
+
+/* =============================================================================
+   PROFILE PHOTO STYLES
+   ============================================================================= */
+
+/* Profile photo container with relative positioning for decorative elements */
+.profile-photo {
+    position: relative;          /* For absolute positioning of decorative border */
+    flex-shrink: 0;             /* Prevent shrinking in flexbox */
+    margin-right: var(--spacing-lg); /* Spacing from personal info */
+}
+
+/* Main profile image styling */
+.profile-img {
+    width: 150px;               /* Fixed width for consistency */
+    height: 150px;              /* Fixed height for perfect circle */
+    border-radius: 50%;         /* Circular shape */
+    object-fit: cover;          /* Cover entire area while maintaining aspect ratio */
+    object-position: center;    /* Center the image within the circle */
+    border: 4px solid rgba(255, 255, 255, 0.3); /* Semi-transparent white border */
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),           /* Main shadow for depth */
+        0 0 0 8px rgba(255, 255, 255, 0.1);      /* Outer glow effect */
+    transition: all 0.3s ease;  /* Smooth transition for hover effects */
+    position: relative;         /* For z-index stacking */
+    z-index: 2;                 /* Above decorative border */
+}
+
+/* Hover effect for profile image */
+.profile-img:hover {
+    transform: scale(1.05);     /* Slight scale increase on hover */
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),          /* Enhanced shadow */
+        0 0 0 12px rgba(255, 255, 255, 0.2);     /* Larger glow */
+    border-color: rgba(255, 255, 255, 0.5);     /* Brighter border on hover */
+}
+
+/* Decorative rotating border element */
+.photo-border {
+    position: absolute;         /* Absolute positioning relative to .profile-photo */
+    top: -15px;                /* Offset from image */
+    left: -15px;
+    width: 180px;              /* Larger than image for border effect */
+    height: 180px;
+    border: 3px solid transparent; /* Transparent base border */
+    border-top: 3px solid rgba(255, 255, 255, 0.6);    /* Visible top border */
+    border-right: 3px solid rgba(255, 255, 255, 0.3);   /* Semi-visible right */
+    border-radius: 50%;        /* Circular shape matching image */
+    z-index: 1;                /* Behind the main image */
+    animation: rotate 10s linear infinite; /* Continuous rotation animation */
+}
+
+/* Rotation animation keyframes */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);  /* Start rotation */
+    }
+    to {
+        transform: rotate(360deg); /* Complete full rotation */
+    }
 }
 
 /* Personal information section */
@@ -541,6 +602,25 @@ ul, ol {
         text-align: center;       /* Center text */
     }
     
+    /* Profile photo adjustments for tablet */
+    .profile-photo {
+        margin-right: 0;          /* Remove right margin when stacked */
+        margin-bottom: var(--spacing-lg); /* Add bottom margin for spacing */
+        order: -1;                /* Move photo to top when stacked */
+    }
+    
+    .profile-img {
+        width: 120px;             /* Smaller size for tablets */
+        height: 120px;
+    }
+    
+    .photo-border {
+        width: 150px;             /* Adjust decorative border size */
+        height: 150px;
+        top: -15px;
+        left: -15px;
+    }
+    
     /* Adjust header padding */
     .header {
         padding: var(--spacing-xl) var(--spacing-lg);
@@ -566,6 +646,23 @@ ul, ol {
     
     .header {
         padding: var(--spacing-lg);
+    }
+    
+    /* Profile photo adjustments for mobile */
+    .profile-img {
+        width: 100px;             /* Smaller size for mobile screens */
+        height: 100px;
+    }
+    
+    .photo-border {
+        width: 130px;             /* Proportional decorative border */
+        height: 130px;
+        top: -15px;
+        left: -15px;
+    }
+    
+    .profile-photo {
+        margin-bottom: var(--spacing-md); /* Reduce bottom margin on mobile */
     }
     
     /* Even smaller heading on mobile */
@@ -619,6 +716,18 @@ ul, ol {
         color-adjust: exact;
     }
     
+    /* Profile photo print optimization */
+    .profile-img {
+        width: 100px;             /* Smaller size for print to save space */
+        height: 100px;
+        box-shadow: none;         /* Remove shadows for clean print */
+        border: 2px solid #333;   /* Solid border for print clarity */
+    }
+    
+    .photo-border {
+        display: none;            /* Hide decorative rotating border in print */
+    }
+    
     /* Ensure good contrast for printing */
     .tech, .soft-skill, .skill-item {
         background-color: #f0f0f0 !important;
@@ -645,6 +754,15 @@ ul, ol {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+    
+    /* Specifically disable profile photo rotation for reduced motion users */
+    .photo-border {
+        animation: none !important; /* Remove rotation animation */
+    }
+    
+    .profile-img:hover {
+        transform: none !important; /* Remove hover scale effect */
     }
 }
 
