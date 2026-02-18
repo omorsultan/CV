@@ -438,6 +438,46 @@ ul, ol {
     padding-left: calc(var(--spacing-lg) + 10px);
     border-left: 4px solid var(--secondary-color);
 }
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.project-header h4 {
+    margin-bottom: 0;
+    flex: 1;
+}
+
+.project-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.project-link:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    color: var(--text-white);
+    text-decoration: none;
+}
+
+.project-link i {
+    font-size: 0.9rem;
+}
 
 .contact-item {
     transition: all 0.3s ease;
@@ -471,6 +511,14 @@ h1, h2, h3, h4 { cursor: default; }
         flex-direction: column;
         align-items: center;
         text-align: center;
+    }
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .project-link {
+        align-self: flex-start;
     }
     
     .profile-photo {
