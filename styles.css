@@ -366,6 +366,100 @@ ul, ol {
     font-size: 0.9rem;
 }
 
+/* Hover and Cursor Effects */
+.section {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.profile-img {
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.tech:hover {
+    transform: scale(1.05);
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.skill-item {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.skill-item:hover {
+    transform: translateY(-2px);
+    background-color: var(--secondary-color);
+    color: var(--text-white);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.soft-skill {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.soft-skill:hover {
+    transform: scale(1.05);
+    background-color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+}
+
+.achievement-item {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.achievement-item:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+    transform: translateX(5px);
+    border-left: 3px solid var(--secondary-color);
+}
+
+.project-item {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.project-item:hover {
+    background-color: rgba(52, 152, 219, 0.02);
+    padding-left: calc(var(--spacing-lg) + 10px);
+    border-left: 4px solid var(--secondary-color);
+}
+
+.contact-item {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.contact-item:hover {
+    transform: translateX(3px);
+}
+
+.contact-item:hover i {
+    transform: scale(1.2);
+    color: rgba(255, 255, 255, 1);
+}
+
+/* Interactive cursor styles */
+h1, h2, h3, h4 { cursor: default; }
+.section-title { cursor: help; }
+.year, .cgpa { cursor: help; }
+.project-type { cursor: help; }
+.university { cursor: help; }
+
 @media (max-width: 768px) {
     .main-content {
         grid-template-columns: 1fr;
